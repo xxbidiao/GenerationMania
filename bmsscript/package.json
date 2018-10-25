@@ -1,0 +1,17 @@
+{
+  "name": "bmsscript",
+  "version": "1.0.0",
+  "description": "bms parser/data access lib",
+  "main": "main.js",
+  "dependencies": {
+    "iconv-lite": "^0.4.19",
+    "mongodb": "^3.0.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zhiyu Lin",
+  "license": "ISC"
+}

@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="54bdded2-356d-425b-ae7b-1c95d48f9f79" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/VEC2_Cymbals_Crash_14.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/a.bms" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/banner.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bass1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bass10.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bass11.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bass2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bass3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bass4.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bass5.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bass6.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bass7.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bass8.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bell1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bell2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bell3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bell4.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bell5.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bell6.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bell7.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bgm10.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bgm11.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bgm3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bgm4.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bgm5.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bgm6.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bgm7.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bgm8.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bgm9.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bit0.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bit1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bit4.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bit5.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bit6.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bit7.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bit8.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/bit9.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/breakdrum2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/breakdrum3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/breakrhythm1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/breakrhythm2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/breakrhythm3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/breakrhythm4.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/breakrhythm5.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/crash1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/crash2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/crash3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/crash4.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/crash5.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/cymbal.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm0_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_012.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_015.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_016.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_017.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_018.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_019.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_020.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_021.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_022.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_024.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_027.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_028.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_029.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_030.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_031.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm1_032.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_012.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_015.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_016.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_017.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_020.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_021.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_022.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_023.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_024.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_025.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_026.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_027.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_028.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_029.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_032.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_033.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_034.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_035.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_036.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_037.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_038.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_039.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_040.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_041.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_042.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_043.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_044.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_047.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_048.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_049.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_050.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_051.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_052.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_053.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_054.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_055.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_056.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_057.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_058.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_059.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_060.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_061.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_062.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fm2_063.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fx.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/fxkick.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/h.bms" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/hat1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/hat2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_10.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_11.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_12.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_13.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_14.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_15.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_16.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_17.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_18.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_20.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_21.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_22.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_24.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_5.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_6.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_7.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_8.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys1_9.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/keys2_5.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/kick1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/kick2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/kick3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/kick4.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_0.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody1_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody2_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody2_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody2_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody2_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody2_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody2_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody2_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody2_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody2_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody2_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_015.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_016.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_017.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_018.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_019.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_020.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_021.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_022.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_023.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_026.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_029.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_030.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_031.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_032.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_033.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_034.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_035.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_036.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_037.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_038.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_039.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_041.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_042.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_043.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_044.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_045.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_046.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_047.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_048.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_049.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_050.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_051.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_056.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_057.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_058.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_059.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_060.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_061.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_062.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_063.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_064.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_065.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_066.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_067.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/melody3_069.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/movie.mpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/n.bms" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano0_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano0_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano0_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano0_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano0_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano0_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_015.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_016.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_017.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_018.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_019.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_020.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_021.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_022.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_023.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_024.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_025.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_028.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_030.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_031.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_2_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_2_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_2_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_2_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_2_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_2_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_2_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano1_2_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_012.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_015.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_016.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_017.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_018.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_020.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_021.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_022.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_023.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_024.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_025.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_026.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_027.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_028.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_029.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_030.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_033.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_034.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_035.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_036.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_037.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_038.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_039.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_040.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_041.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_042.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_043.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_044.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_045.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_046.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_049.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_050.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_051.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_052.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_053.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_054.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_055.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_056.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_057.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_058.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_059.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_061.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_062.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_063.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_064.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_065.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_066.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_067.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_068.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_069.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_070.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_071.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_073.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_076.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_077.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_078.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_079.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_080.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_081.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_082.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_083.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_084.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_085.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_086.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_087.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_088.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_089.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_090.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_091.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_092.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_093.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_094.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_095.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_096.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_097.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_098.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_099.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_100.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_101.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_106.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_107.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_108.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_109.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_110.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_111.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_112.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_113.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_114.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_115.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_116.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_119.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_120.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_121.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_122.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_123.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_124.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_125.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_126.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_127.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_128.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_129.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piano2_131.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin12.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin4.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin5.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin6.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin7.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin8.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin9.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/pianoin_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_012.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_015.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_018.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_019.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_020.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_021.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/piccolo_022.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/reversecymbal1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/reversecymbal2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/reversekick.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_012.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_015.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_018.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_019.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_020.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_021.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_022.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_023.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_024.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_025.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_026.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_027.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_028.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_029.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_030.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_031.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_032.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_033.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_034.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_035.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_036.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_037.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_038.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_039.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_040.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_041.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_042.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_045.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_046.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_048.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_049.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_050.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_051.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_052.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_053.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_054.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw0_055.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw10.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw11.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw4.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw5.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw6.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw7.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw8.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/saw9.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_012.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_015.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_016.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_017.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_018.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_020.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_021.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_022.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_023.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_024.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_025.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_026.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_027.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_028.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_029.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll1_030.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/snareroll4.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_012.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_1_2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_2_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_2_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_2_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_2_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_2_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_2_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_2_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_2_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato1_2_1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato2_1_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato2_1_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato2_1_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato2_1_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato2_1_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato2_2_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato2_2_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato2_2_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato2_2_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato2_2_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato2_2_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_012.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_015.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato31_016.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccato32_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/staccatoin.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/the_end.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/title.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_012.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_015.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_016.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_017.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_018.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_019.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_020.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_021.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_022.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_023.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_026.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_027.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_028.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_029.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_030.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_031.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_032.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_033.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_034.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_035.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_036.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_038.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_040.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_041.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_042.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_043.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_044.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_045.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_046.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_047.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_048.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_049.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_050.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_051.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_055.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_056.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_057.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_058.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_059.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_060.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_061.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_062.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_063.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_064.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_065.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin1_066.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_010.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_012.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_019.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_020.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_021.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_022.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_023.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_024.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_025.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_026.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_027.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_028.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_031.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_032.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_033.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_034.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_035.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_036.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_037.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_038.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_039.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_040.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_041.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_044.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_046.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_047.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_048.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_049.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_050.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_051.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_052.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_053.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_054.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_055.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_056.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_057.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_060.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_061.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_062.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_063.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_064.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_065.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_066.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_067.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_068.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_069.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violin2_074.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_000.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_001.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_002.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_003.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_004.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_005.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_006.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_007.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_008.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_009.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_011.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_012.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_013.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_014.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_015.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_016.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_017.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_018.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/violinroll_019.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/zz.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/1/_readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/keysounded.bms" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../data_access/BMStoDB.py" afterPath="$PROJECT_DIR$/../data_access/BMStoDB.py" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="parse-single.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parse-single.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bms.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bms.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parser-full.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parser-full.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="918">
+              <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bms-js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1674">
+              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/parser.js" />
+        <option value="$PROJECT_DIR$/parse-single.js" />
+        <option value="$PROJECT_DIR$/parser-full.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/bms-js/node_modules" />
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="24" />
+    <option name="width" value="1920" />
+    <option name="height" value="993" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="54bdded2-356d-425b-ae7b-1c95d48f9f79" name="Default" comment="" />
+      <created>1510860675703</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1510860675703</updated>
+      <workItem from="1510861042803" duration="8386000" />
+      <workItem from="1513127908478" duration="704000" />
+      <workItem from="1513128656073" duration="1597000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="10687000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="24" width="1920" height="993" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/parse-single.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser-full.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms-js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1674">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse-single.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser-full.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms-js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1674">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse-single.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser-full.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms-js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1674">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="999">
+          <caret line="37" column="15" lean-forward="false" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse-single.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser-full.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms-js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1674">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2325">
+          <caret line="75" column="26" lean-forward="false" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="775">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="38" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser-full.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="75" column="26" lean-forward="false" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="38" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser-full.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="83" lean-forward="false" selection-start-line="26" selection-start-column="83" selection-end-line="26" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1302">
+          <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms-js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1674">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse-single.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser-full.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

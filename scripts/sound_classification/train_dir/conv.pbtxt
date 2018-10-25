@@ -1,0 +1,8765 @@
+node {
+  name: "Placeholder"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+      }
+    }
+  }
+}
+node {
+  name: "ReadFile"
+  op: "ReadFile"
+  input: "Placeholder"
+}
+node {
+  name: "DecodeWav"
+  op: "DecodeWav"
+  input: "ReadFile"
+  attr {
+    key: "desired_channels"
+    value {
+      i: 1
+    }
+  }
+  attr {
+    key: "desired_samples"
+    value {
+      i: 32000
+    }
+  }
+}
+node {
+  name: "Placeholder_1"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+      }
+    }
+  }
+}
+node {
+  name: "Mul"
+  op: "Mul"
+  input: "DecodeWav"
+  input: "Placeholder_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Placeholder_2"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 2
+        }
+        dim {
+          size: 2
+        }
+      }
+    }
+  }
+}
+node {
+  name: "Placeholder_3"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 2
+        }
+      }
+    }
+  }
+}
+node {
+  name: "Pad"
+  op: "Pad"
+  input: "Mul"
+  input: "Placeholder_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tpaddings"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "Slice/size"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000}\000\000\377\377\377\377"
+      }
+    }
+  }
+}
+node {
+  name: "Slice"
+  op: "Slice"
+  input: "Pad"
+  input: "Placeholder_3"
+  input: "Slice/size"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Placeholder_4"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 32000
+        }
+        dim {
+          size: 1
+        }
+      }
+    }
+  }
+}
+node {
+  name: "Placeholder_5"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+      }
+    }
+  }
+}
+node {
+  name: "Mul_1"
+  op: "Mul"
+  input: "Placeholder_4"
+  input: "Placeholder_5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Add"
+  op: "Add"
+  input: "Mul_1"
+  input: "Slice"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "clip_by_value/Minimum/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "clip_by_value/Minimum"
+  op: "Minimum"
+  input: "Add"
+  input: "clip_by_value/Minimum/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "clip_by_value/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: -1.0
+      }
+    }
+  }
+}
+node {
+  name: "clip_by_value"
+  op: "Maximum"
+  input: "clip_by_value/Minimum"
+  input: "clip_by_value/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AudioSpectrogram"
+  op: "AudioSpectrogram"
+  input: "clip_by_value"
+  attr {
+    key: "magnitude_squared"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "stride"
+    value {
+      i: 160
+    }
+  }
+  attr {
+    key: "window_size"
+    value {
+      i: 480
+    }
+  }
+}
+node {
+  name: "Mfcc"
+  op: "Mfcc"
+  input: "AudioSpectrogram"
+  input: "DecodeWav:1"
+  attr {
+    key: "dct_coefficient_count"
+    value {
+      i: 40
+    }
+  }
+  attr {
+    key: "filterbank_channel_count"
+    value {
+      i: 40
+    }
+  }
+  attr {
+    key: "lower_frequency_limit"
+    value {
+      f: 20.0
+    }
+  }
+  attr {
+    key: "upper_frequency_limit"
+    value {
+      f: 4000.0
+    }
+  }
+}
+node {
+  name: "fingerprint_input"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: -1
+        }
+        dim {
+          size: 7920
+        }
+      }
+    }
+  }
+}
+node {
+  name: "dropout_prob"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        unknown_rank: true
+      }
+    }
+  }
+}
+node {
+  name: "Reshape/shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\377\377\377\377\306\000\000\000(\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "Reshape"
+  op: "Reshape"
+  input: "fingerprint_input"
+  input: "Reshape/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "truncated_normal/shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\024\000\000\000\010\000\000\000\001\000\000\000@\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "truncated_normal/mean"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "truncated_normal/stddev"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.00999999977648
+      }
+    }
+  }
+}
+node {
+  name: "truncated_normal/TruncatedNormal"
+  op: "TruncatedNormal"
+  input: "truncated_normal/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "truncated_normal/mul"
+  op: "Mul"
+  input: "truncated_normal/TruncatedNormal"
+  input: "truncated_normal/stddev"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "truncated_normal"
+  op: "Add"
+  input: "truncated_normal/mul"
+  input: "truncated_normal/mean"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Variable"
+  op: "VariableV2"
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 20
+        }
+        dim {
+          size: 8
+        }
+        dim {
+          size: 1
+        }
+        dim {
+          size: 64
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "Variable/Assign"
+  op: "Assign"
+  input: "Variable"
+  input: "truncated_normal"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "Variable/read"
+  op: "Identity"
+  input: "Variable"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable"
+      }
+    }
+  }
+}
+node {
+  name: "zeros"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 64
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Variable_1"
+  op: "VariableV2"
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 64
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "Variable_1/Assign"
+  op: "Assign"
+  input: "Variable_1"
+  input: "zeros"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_1"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "Variable_1/read"
+  op: "Identity"
+  input: "Variable_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_1"
+      }
+    }
+  }
+}
+node {
+  name: "Conv2D"
+  op: "Conv2D"
+  input: "Reshape"
+  input: "Variable/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "dilations"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "add"
+  op: "Add"
+  input: "Conv2D"
+  input: "Variable_1/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Relu"
+  op: "Relu"
+  input: "add"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout/Shape"
+  op: "Shape"
+  input: "Relu"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "dropout/random_uniform/min"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "dropout/random_uniform/max"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "dropout/random_uniform/RandomUniform"
+  op: "RandomUniform"
+  input: "dropout/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "dropout/random_uniform/sub"
+  op: "Sub"
+  input: "dropout/random_uniform/max"
+  input: "dropout/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout/random_uniform/mul"
+  op: "Mul"
+  input: "dropout/random_uniform/RandomUniform"
+  input: "dropout/random_uniform/sub"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout/random_uniform"
+  op: "Add"
+  input: "dropout/random_uniform/mul"
+  input: "dropout/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout/add"
+  op: "Add"
+  input: "dropout_prob"
+  input: "dropout/random_uniform"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout/Floor"
+  op: "Floor"
+  input: "dropout/add"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout/div"
+  op: "RealDiv"
+  input: "Relu"
+  input: "dropout_prob"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout/mul"
+  op: "Mul"
+  input: "dropout/div"
+  input: "dropout/Floor"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "MaxPool"
+  op: "MaxPool"
+  input: "dropout/mul"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "ksize"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "truncated_normal_1/shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\n\000\000\000\004\000\000\000@\000\000\000@\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "truncated_normal_1/mean"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "truncated_normal_1/stddev"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.00999999977648
+      }
+    }
+  }
+}
+node {
+  name: "truncated_normal_1/TruncatedNormal"
+  op: "TruncatedNormal"
+  input: "truncated_normal_1/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "truncated_normal_1/mul"
+  op: "Mul"
+  input: "truncated_normal_1/TruncatedNormal"
+  input: "truncated_normal_1/stddev"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "truncated_normal_1"
+  op: "Add"
+  input: "truncated_normal_1/mul"
+  input: "truncated_normal_1/mean"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Variable_2"
+  op: "VariableV2"
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 10
+        }
+        dim {
+          size: 4
+        }
+        dim {
+          size: 64
+        }
+        dim {
+          size: 64
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "Variable_2/Assign"
+  op: "Assign"
+  input: "Variable_2"
+  input: "truncated_normal_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_2"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "Variable_2/read"
+  op: "Identity"
+  input: "Variable_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_2"
+      }
+    }
+  }
+}
+node {
+  name: "zeros_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 64
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Variable_3"
+  op: "VariableV2"
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 64
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "Variable_3/Assign"
+  op: "Assign"
+  input: "Variable_3"
+  input: "zeros_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_3"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "Variable_3/read"
+  op: "Identity"
+  input: "Variable_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_3"
+      }
+    }
+  }
+}
+node {
+  name: "Conv2D_1"
+  op: "Conv2D"
+  input: "MaxPool"
+  input: "Variable_2/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "dilations"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "add_1"
+  op: "Add"
+  input: "Conv2D_1"
+  input: "Variable_3/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Relu_1"
+  op: "Relu"
+  input: "add_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout_1/Shape"
+  op: "Shape"
+  input: "Relu_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "dropout_1/random_uniform/min"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "dropout_1/random_uniform/max"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "dropout_1/random_uniform/RandomUniform"
+  op: "RandomUniform"
+  input: "dropout_1/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "dropout_1/random_uniform/sub"
+  op: "Sub"
+  input: "dropout_1/random_uniform/max"
+  input: "dropout_1/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout_1/random_uniform/mul"
+  op: "Mul"
+  input: "dropout_1/random_uniform/RandomUniform"
+  input: "dropout_1/random_uniform/sub"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout_1/random_uniform"
+  op: "Add"
+  input: "dropout_1/random_uniform/mul"
+  input: "dropout_1/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout_1/add"
+  op: "Add"
+  input: "dropout_prob"
+  input: "dropout_1/random_uniform"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout_1/Floor"
+  op: "Floor"
+  input: "dropout_1/add"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout_1/div"
+  op: "RealDiv"
+  input: "Relu_1"
+  input: "dropout_prob"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "dropout_1/mul"
+  op: "Mul"
+  input: "dropout_1/div"
+  input: "dropout_1/Floor"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Reshape_1/shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\377\377\377\377\000\357\001\000"
+      }
+    }
+  }
+}
+node {
+  name: "Reshape_1"
+  op: "Reshape"
+  input: "dropout_1/mul"
+  input: "Reshape_1/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "truncated_normal_2/shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000\357\001\000\035\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "truncated_normal_2/mean"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "truncated_normal_2/stddev"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.00999999977648
+      }
+    }
+  }
+}
+node {
+  name: "truncated_normal_2/TruncatedNormal"
+  op: "TruncatedNormal"
+  input: "truncated_normal_2/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "truncated_normal_2/mul"
+  op: "Mul"
+  input: "truncated_normal_2/TruncatedNormal"
+  input: "truncated_normal_2/stddev"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "truncated_normal_2"
+  op: "Add"
+  input: "truncated_normal_2/mul"
+  input: "truncated_normal_2/mean"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Variable_4"
+  op: "VariableV2"
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 126720
+        }
+        dim {
+          size: 29
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "Variable_4/Assign"
+  op: "Assign"
+  input: "Variable_4"
+  input: "truncated_normal_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_4"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "Variable_4/read"
+  op: "Identity"
+  input: "Variable_4"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_4"
+      }
+    }
+  }
+}
+node {
+  name: "zeros_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 29
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Variable_5"
+  op: "VariableV2"
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 29
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "Variable_5/Assign"
+  op: "Assign"
+  input: "Variable_5"
+  input: "zeros_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_5"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "Variable_5/read"
+  op: "Identity"
+  input: "Variable_5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_5"
+      }
+    }
+  }
+}
+node {
+  name: "MatMul"
+  op: "MatMul"
+  input: "Reshape_1"
+  input: "Variable_4/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "add_2"
+  op: "Add"
+  input: "MatMul"
+  input: "Variable_5/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "groundtruth_input"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: -1
+        }
+        dim {
+          size: 29
+        }
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/labels_stop_gradient"
+  op: "StopGradient"
+  input: "groundtruth_input"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Rank"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Shape"
+  op: "Shape"
+  input: "add_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Rank_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Shape_1"
+  op: "Shape"
+  input: "add_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub"
+  op: "Sub"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Rank_1"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice/begin"
+  op: "Pack"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub"
+  attr {
+    key: "N"
+    value {
+      i: 1
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice/size"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice"
+  op: "Slice"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Shape_1"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice/begin"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice/size"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat/values_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: -1
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat"
+  op: "ConcatV2"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat/values_0"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape"
+  op: "Reshape"
+  input: "add_2"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Rank_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Shape_2"
+  op: "Shape"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/labels_stop_gradient"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub_1/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub_1"
+  op: "Sub"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Rank_2"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub_1/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_1/begin"
+  op: "Pack"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub_1"
+  attr {
+    key: "N"
+    value {
+      i: 1
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_1/size"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_1"
+  op: "Slice"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Shape_2"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_1/begin"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_1/size"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat_1/values_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: -1
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat_1"
+  op: "ConcatV2"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat_1/values_0"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_1"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat_1/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_1"
+  op: "Reshape"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/labels_stop_gradient"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/concat_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg"
+  op: "SoftmaxCrossEntropyWithLogits"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub_2/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub_2"
+  op: "Sub"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Rank"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub_2/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_2/begin"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_2/size"
+  op: "Pack"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Sub_2"
+  attr {
+    key: "N"
+    value {
+      i: 1
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_2"
+  op: "Slice"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Shape"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_2/begin"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_2/size"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_2"
+  op: "Reshape"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Slice_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "cross_entropy/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy/Mean"
+  op: "Mean"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_2"
+  input: "cross_entropy/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "cross_entropy_1/tags"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "cross_entropy_1"
+      }
+    }
+  }
+}
+node {
+  name: "cross_entropy_1"
+  op: "ScalarSummary"
+  input: "cross_entropy_1/tags"
+  input: "cross_entropy/Mean"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/learning_rate_input"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/Shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/grad_ys_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/Fill"
+  op: "Fill"
+  input: "train/gradients/Shape"
+  input: "train/gradients/grad_ys_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Reshape/shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Reshape"
+  op: "Reshape"
+  input: "train/gradients/Fill"
+  input: "train/gradients/cross_entropy/Mean_grad/Reshape/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Shape"
+  op: "Shape"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Tile"
+  op: "Tile"
+  input: "train/gradients/cross_entropy/Mean_grad/Reshape"
+  input: "train/gradients/cross_entropy/Mean_grad/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tmultiples"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Shape_1"
+  op: "Shape"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Prod"
+  op: "Prod"
+  input: "train/gradients/cross_entropy/Mean_grad/Shape_1"
+  input: "train/gradients/cross_entropy/Mean_grad/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Const_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Prod_1"
+  op: "Prod"
+  input: "train/gradients/cross_entropy/Mean_grad/Shape_2"
+  input: "train/gradients/cross_entropy/Mean_grad/Const_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Maximum/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Maximum"
+  op: "Maximum"
+  input: "train/gradients/cross_entropy/Mean_grad/Prod_1"
+  input: "train/gradients/cross_entropy/Mean_grad/Maximum/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/floordiv"
+  op: "FloorDiv"
+  input: "train/gradients/cross_entropy/Mean_grad/Prod"
+  input: "train/gradients/cross_entropy/Mean_grad/Maximum"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/Cast"
+  op: "Cast"
+  input: "train/gradients/cross_entropy/Mean_grad/floordiv"
+  attr {
+    key: "DstT"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "SrcT"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/Mean_grad/truediv"
+  op: "RealDiv"
+  input: "train/gradients/cross_entropy/Mean_grad/Tile"
+  input: "train/gradients/cross_entropy/Mean_grad/Cast"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_2_grad/Shape"
+  op: "Shape"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_2_grad/Reshape"
+  op: "Reshape"
+  input: "train/gradients/cross_entropy/Mean_grad/truediv"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_2_grad/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/zeros_like"
+  op: "ZerosLike"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/ExpandDims/dim"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: -1
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/ExpandDims"
+  op: "ExpandDims"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_2_grad/Reshape"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/ExpandDims/dim"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tdim"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/mul"
+  op: "Mul"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/ExpandDims"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/LogSoftmax"
+  op: "LogSoftmax"
+  input: "cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/Neg"
+  op: "Neg"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/LogSoftmax"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/ExpandDims_1/dim"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: -1
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/ExpandDims_1"
+  op: "ExpandDims"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_2_grad/Reshape"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/ExpandDims_1/dim"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tdim"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/mul_1"
+  op: "Mul"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/ExpandDims_1"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/Neg"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/tuple/group_deps"
+  op: "NoOp"
+  input: "^train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/mul"
+  input: "^train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/mul_1"
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/tuple/control_dependency"
+  op: "Identity"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/mul"
+  input: "^train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/mul"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/tuple/control_dependency_1"
+  op: "Identity"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/mul_1"
+  input: "^train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/mul_1"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_grad/Shape"
+  op: "Shape"
+  input: "add_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_grad/Reshape"
+  op: "Reshape"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg_grad/tuple/control_dependency"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_grad/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_2_grad/Shape"
+  op: "Shape"
+  input: "MatMul"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_2_grad/Shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 29
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/add_2_grad/BroadcastGradientArgs"
+  op: "BroadcastGradientArgs"
+  input: "train/gradients/add_2_grad/Shape"
+  input: "train/gradients/add_2_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_2_grad/Sum"
+  op: "Sum"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_grad/Reshape"
+  input: "train/gradients/add_2_grad/BroadcastGradientArgs"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/add_2_grad/Reshape"
+  op: "Reshape"
+  input: "train/gradients/add_2_grad/Sum"
+  input: "train/gradients/add_2_grad/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_2_grad/Sum_1"
+  op: "Sum"
+  input: "train/gradients/cross_entropy/softmax_cross_entropy_with_logits_sg/Reshape_grad/Reshape"
+  input: "train/gradients/add_2_grad/BroadcastGradientArgs:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/add_2_grad/Reshape_1"
+  op: "Reshape"
+  input: "train/gradients/add_2_grad/Sum_1"
+  input: "train/gradients/add_2_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_2_grad/tuple/group_deps"
+  op: "NoOp"
+  input: "^train/gradients/add_2_grad/Reshape"
+  input: "^train/gradients/add_2_grad/Reshape_1"
+}
+node {
+  name: "train/gradients/add_2_grad/tuple/control_dependency"
+  op: "Identity"
+  input: "train/gradients/add_2_grad/Reshape"
+  input: "^train/gradients/add_2_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/add_2_grad/Reshape"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/add_2_grad/tuple/control_dependency_1"
+  op: "Identity"
+  input: "train/gradients/add_2_grad/Reshape_1"
+  input: "^train/gradients/add_2_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/add_2_grad/Reshape_1"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/MatMul_grad/MatMul"
+  op: "MatMul"
+  input: "train/gradients/add_2_grad/tuple/control_dependency"
+  input: "Variable_4/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "train/gradients/MatMul_grad/MatMul_1"
+  op: "MatMul"
+  input: "Reshape_1"
+  input: "train/gradients/add_2_grad/tuple/control_dependency"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/MatMul_grad/tuple/group_deps"
+  op: "NoOp"
+  input: "^train/gradients/MatMul_grad/MatMul"
+  input: "^train/gradients/MatMul_grad/MatMul_1"
+}
+node {
+  name: "train/gradients/MatMul_grad/tuple/control_dependency"
+  op: "Identity"
+  input: "train/gradients/MatMul_grad/MatMul"
+  input: "^train/gradients/MatMul_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/MatMul_grad/MatMul"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/MatMul_grad/tuple/control_dependency_1"
+  op: "Identity"
+  input: "train/gradients/MatMul_grad/MatMul_1"
+  input: "^train/gradients/MatMul_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/MatMul_grad/MatMul_1"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/Reshape_1_grad/Shape"
+  op: "Shape"
+  input: "dropout_1/mul"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/Reshape_1_grad/Reshape"
+  op: "Reshape"
+  input: "train/gradients/MatMul_grad/tuple/control_dependency"
+  input: "train/gradients/Reshape_1_grad/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/Shape"
+  op: "Shape"
+  input: "dropout_1/div"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/Shape_1"
+  op: "Shape"
+  input: "dropout_1/Floor"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/BroadcastGradientArgs"
+  op: "BroadcastGradientArgs"
+  input: "train/gradients/dropout_1/mul_grad/Shape"
+  input: "train/gradients/dropout_1/mul_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/mul"
+  op: "Mul"
+  input: "train/gradients/Reshape_1_grad/Reshape"
+  input: "dropout_1/Floor"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/Sum"
+  op: "Sum"
+  input: "train/gradients/dropout_1/mul_grad/mul"
+  input: "train/gradients/dropout_1/mul_grad/BroadcastGradientArgs"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/Reshape"
+  op: "Reshape"
+  input: "train/gradients/dropout_1/mul_grad/Sum"
+  input: "train/gradients/dropout_1/mul_grad/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/mul_1"
+  op: "Mul"
+  input: "dropout_1/div"
+  input: "train/gradients/Reshape_1_grad/Reshape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/Sum_1"
+  op: "Sum"
+  input: "train/gradients/dropout_1/mul_grad/mul_1"
+  input: "train/gradients/dropout_1/mul_grad/BroadcastGradientArgs:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/Reshape_1"
+  op: "Reshape"
+  input: "train/gradients/dropout_1/mul_grad/Sum_1"
+  input: "train/gradients/dropout_1/mul_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/tuple/group_deps"
+  op: "NoOp"
+  input: "^train/gradients/dropout_1/mul_grad/Reshape"
+  input: "^train/gradients/dropout_1/mul_grad/Reshape_1"
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/tuple/control_dependency"
+  op: "Identity"
+  input: "train/gradients/dropout_1/mul_grad/Reshape"
+  input: "^train/gradients/dropout_1/mul_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/dropout_1/mul_grad/Reshape"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/mul_grad/tuple/control_dependency_1"
+  op: "Identity"
+  input: "train/gradients/dropout_1/mul_grad/Reshape_1"
+  input: "^train/gradients/dropout_1/mul_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/dropout_1/mul_grad/Reshape_1"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/Shape"
+  op: "Shape"
+  input: "Relu_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/Shape_1"
+  op: "Shape"
+  input: "dropout_prob"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/BroadcastGradientArgs"
+  op: "BroadcastGradientArgs"
+  input: "train/gradients/dropout_1/div_grad/Shape"
+  input: "train/gradients/dropout_1/div_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/RealDiv"
+  op: "RealDiv"
+  input: "train/gradients/dropout_1/mul_grad/tuple/control_dependency"
+  input: "dropout_prob"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/Sum"
+  op: "Sum"
+  input: "train/gradients/dropout_1/div_grad/RealDiv"
+  input: "train/gradients/dropout_1/div_grad/BroadcastGradientArgs"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/Reshape"
+  op: "Reshape"
+  input: "train/gradients/dropout_1/div_grad/Sum"
+  input: "train/gradients/dropout_1/div_grad/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/Neg"
+  op: "Neg"
+  input: "Relu_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/RealDiv_1"
+  op: "RealDiv"
+  input: "train/gradients/dropout_1/div_grad/Neg"
+  input: "dropout_prob"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/RealDiv_2"
+  op: "RealDiv"
+  input: "train/gradients/dropout_1/div_grad/RealDiv_1"
+  input: "dropout_prob"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/mul"
+  op: "Mul"
+  input: "train/gradients/dropout_1/mul_grad/tuple/control_dependency"
+  input: "train/gradients/dropout_1/div_grad/RealDiv_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/Sum_1"
+  op: "Sum"
+  input: "train/gradients/dropout_1/div_grad/mul"
+  input: "train/gradients/dropout_1/div_grad/BroadcastGradientArgs:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/Reshape_1"
+  op: "Reshape"
+  input: "train/gradients/dropout_1/div_grad/Sum_1"
+  input: "train/gradients/dropout_1/div_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/tuple/group_deps"
+  op: "NoOp"
+  input: "^train/gradients/dropout_1/div_grad/Reshape"
+  input: "^train/gradients/dropout_1/div_grad/Reshape_1"
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/tuple/control_dependency"
+  op: "Identity"
+  input: "train/gradients/dropout_1/div_grad/Reshape"
+  input: "^train/gradients/dropout_1/div_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/dropout_1/div_grad/Reshape"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout_1/div_grad/tuple/control_dependency_1"
+  op: "Identity"
+  input: "train/gradients/dropout_1/div_grad/Reshape_1"
+  input: "^train/gradients/dropout_1/div_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/dropout_1/div_grad/Reshape_1"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/Relu_1_grad/ReluGrad"
+  op: "ReluGrad"
+  input: "train/gradients/dropout_1/div_grad/tuple/control_dependency"
+  input: "Relu_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/add_1_grad/Shape"
+  op: "Shape"
+  input: "Conv2D_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_1_grad/Shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 64
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/add_1_grad/BroadcastGradientArgs"
+  op: "BroadcastGradientArgs"
+  input: "train/gradients/add_1_grad/Shape"
+  input: "train/gradients/add_1_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_1_grad/Sum"
+  op: "Sum"
+  input: "train/gradients/Relu_1_grad/ReluGrad"
+  input: "train/gradients/add_1_grad/BroadcastGradientArgs"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/add_1_grad/Reshape"
+  op: "Reshape"
+  input: "train/gradients/add_1_grad/Sum"
+  input: "train/gradients/add_1_grad/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_1_grad/Sum_1"
+  op: "Sum"
+  input: "train/gradients/Relu_1_grad/ReluGrad"
+  input: "train/gradients/add_1_grad/BroadcastGradientArgs:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/add_1_grad/Reshape_1"
+  op: "Reshape"
+  input: "train/gradients/add_1_grad/Sum_1"
+  input: "train/gradients/add_1_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_1_grad/tuple/group_deps"
+  op: "NoOp"
+  input: "^train/gradients/add_1_grad/Reshape"
+  input: "^train/gradients/add_1_grad/Reshape_1"
+}
+node {
+  name: "train/gradients/add_1_grad/tuple/control_dependency"
+  op: "Identity"
+  input: "train/gradients/add_1_grad/Reshape"
+  input: "^train/gradients/add_1_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/add_1_grad/Reshape"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/add_1_grad/tuple/control_dependency_1"
+  op: "Identity"
+  input: "train/gradients/add_1_grad/Reshape_1"
+  input: "^train/gradients/add_1_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/add_1_grad/Reshape_1"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_1_grad/ShapeN"
+  op: "ShapeN"
+  input: "MaxPool"
+  input: "Variable_2/read"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_1_grad/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\n\000\000\000\004\000\000\000@\000\000\000@\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_1_grad/Conv2DBackpropInput"
+  op: "Conv2DBackpropInput"
+  input: "train/gradients/Conv2D_1_grad/ShapeN"
+  input: "Variable_2/read"
+  input: "train/gradients/add_1_grad/tuple/control_dependency"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "dilations"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_1_grad/Conv2DBackpropFilter"
+  op: "Conv2DBackpropFilter"
+  input: "MaxPool"
+  input: "train/gradients/Conv2D_1_grad/Const"
+  input: "train/gradients/add_1_grad/tuple/control_dependency"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "dilations"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_1_grad/tuple/group_deps"
+  op: "NoOp"
+  input: "^train/gradients/Conv2D_1_grad/Conv2DBackpropInput"
+  input: "^train/gradients/Conv2D_1_grad/Conv2DBackpropFilter"
+}
+node {
+  name: "train/gradients/Conv2D_1_grad/tuple/control_dependency"
+  op: "Identity"
+  input: "train/gradients/Conv2D_1_grad/Conv2DBackpropInput"
+  input: "^train/gradients/Conv2D_1_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/Conv2D_1_grad/Conv2DBackpropInput"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_1_grad/tuple/control_dependency_1"
+  op: "Identity"
+  input: "train/gradients/Conv2D_1_grad/Conv2DBackpropFilter"
+  input: "^train/gradients/Conv2D_1_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/Conv2D_1_grad/Conv2DBackpropFilter"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/MaxPool_grad/MaxPoolGrad"
+  op: "MaxPoolGrad"
+  input: "dropout/mul"
+  input: "MaxPool"
+  input: "train/gradients/Conv2D_1_grad/tuple/control_dependency"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "ksize"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/mul_grad/Shape"
+  op: "Shape"
+  input: "dropout/div"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/mul_grad/Shape_1"
+  op: "Shape"
+  input: "dropout/Floor"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/mul_grad/BroadcastGradientArgs"
+  op: "BroadcastGradientArgs"
+  input: "train/gradients/dropout/mul_grad/Shape"
+  input: "train/gradients/dropout/mul_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/mul_grad/mul"
+  op: "Mul"
+  input: "train/gradients/MaxPool_grad/MaxPoolGrad"
+  input: "dropout/Floor"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/mul_grad/Sum"
+  op: "Sum"
+  input: "train/gradients/dropout/mul_grad/mul"
+  input: "train/gradients/dropout/mul_grad/BroadcastGradientArgs"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/mul_grad/Reshape"
+  op: "Reshape"
+  input: "train/gradients/dropout/mul_grad/Sum"
+  input: "train/gradients/dropout/mul_grad/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/mul_grad/mul_1"
+  op: "Mul"
+  input: "dropout/div"
+  input: "train/gradients/MaxPool_grad/MaxPoolGrad"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/mul_grad/Sum_1"
+  op: "Sum"
+  input: "train/gradients/dropout/mul_grad/mul_1"
+  input: "train/gradients/dropout/mul_grad/BroadcastGradientArgs:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/mul_grad/Reshape_1"
+  op: "Reshape"
+  input: "train/gradients/dropout/mul_grad/Sum_1"
+  input: "train/gradients/dropout/mul_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/mul_grad/tuple/group_deps"
+  op: "NoOp"
+  input: "^train/gradients/dropout/mul_grad/Reshape"
+  input: "^train/gradients/dropout/mul_grad/Reshape_1"
+}
+node {
+  name: "train/gradients/dropout/mul_grad/tuple/control_dependency"
+  op: "Identity"
+  input: "train/gradients/dropout/mul_grad/Reshape"
+  input: "^train/gradients/dropout/mul_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/dropout/mul_grad/Reshape"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/mul_grad/tuple/control_dependency_1"
+  op: "Identity"
+  input: "train/gradients/dropout/mul_grad/Reshape_1"
+  input: "^train/gradients/dropout/mul_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/dropout/mul_grad/Reshape_1"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/Shape"
+  op: "Shape"
+  input: "Relu"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/Shape_1"
+  op: "Shape"
+  input: "dropout_prob"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/BroadcastGradientArgs"
+  op: "BroadcastGradientArgs"
+  input: "train/gradients/dropout/div_grad/Shape"
+  input: "train/gradients/dropout/div_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/RealDiv"
+  op: "RealDiv"
+  input: "train/gradients/dropout/mul_grad/tuple/control_dependency"
+  input: "dropout_prob"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/Sum"
+  op: "Sum"
+  input: "train/gradients/dropout/div_grad/RealDiv"
+  input: "train/gradients/dropout/div_grad/BroadcastGradientArgs"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/Reshape"
+  op: "Reshape"
+  input: "train/gradients/dropout/div_grad/Sum"
+  input: "train/gradients/dropout/div_grad/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/Neg"
+  op: "Neg"
+  input: "Relu"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/RealDiv_1"
+  op: "RealDiv"
+  input: "train/gradients/dropout/div_grad/Neg"
+  input: "dropout_prob"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/RealDiv_2"
+  op: "RealDiv"
+  input: "train/gradients/dropout/div_grad/RealDiv_1"
+  input: "dropout_prob"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/mul"
+  op: "Mul"
+  input: "train/gradients/dropout/mul_grad/tuple/control_dependency"
+  input: "train/gradients/dropout/div_grad/RealDiv_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/Sum_1"
+  op: "Sum"
+  input: "train/gradients/dropout/div_grad/mul"
+  input: "train/gradients/dropout/div_grad/BroadcastGradientArgs:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/Reshape_1"
+  op: "Reshape"
+  input: "train/gradients/dropout/div_grad/Sum_1"
+  input: "train/gradients/dropout/div_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/tuple/group_deps"
+  op: "NoOp"
+  input: "^train/gradients/dropout/div_grad/Reshape"
+  input: "^train/gradients/dropout/div_grad/Reshape_1"
+}
+node {
+  name: "train/gradients/dropout/div_grad/tuple/control_dependency"
+  op: "Identity"
+  input: "train/gradients/dropout/div_grad/Reshape"
+  input: "^train/gradients/dropout/div_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/dropout/div_grad/Reshape"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/dropout/div_grad/tuple/control_dependency_1"
+  op: "Identity"
+  input: "train/gradients/dropout/div_grad/Reshape_1"
+  input: "^train/gradients/dropout/div_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/dropout/div_grad/Reshape_1"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/Relu_grad/ReluGrad"
+  op: "ReluGrad"
+  input: "train/gradients/dropout/div_grad/tuple/control_dependency"
+  input: "Relu"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "train/gradients/add_grad/Shape"
+  op: "Shape"
+  input: "Conv2D"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_grad/Shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 64
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/add_grad/BroadcastGradientArgs"
+  op: "BroadcastGradientArgs"
+  input: "train/gradients/add_grad/Shape"
+  input: "train/gradients/add_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_grad/Sum"
+  op: "Sum"
+  input: "train/gradients/Relu_grad/ReluGrad"
+  input: "train/gradients/add_grad/BroadcastGradientArgs"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/add_grad/Reshape"
+  op: "Reshape"
+  input: "train/gradients/add_grad/Sum"
+  input: "train/gradients/add_grad/Shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_grad/Sum_1"
+  op: "Sum"
+  input: "train/gradients/Relu_grad/ReluGrad"
+  input: "train/gradients/add_grad/BroadcastGradientArgs:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/gradients/add_grad/Reshape_1"
+  op: "Reshape"
+  input: "train/gradients/add_grad/Sum_1"
+  input: "train/gradients/add_grad/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/add_grad/tuple/group_deps"
+  op: "NoOp"
+  input: "^train/gradients/add_grad/Reshape"
+  input: "^train/gradients/add_grad/Reshape_1"
+}
+node {
+  name: "train/gradients/add_grad/tuple/control_dependency"
+  op: "Identity"
+  input: "train/gradients/add_grad/Reshape"
+  input: "^train/gradients/add_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/add_grad/Reshape"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/add_grad/tuple/control_dependency_1"
+  op: "Identity"
+  input: "train/gradients/add_grad/Reshape_1"
+  input: "^train/gradients/add_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/add_grad/Reshape_1"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_grad/ShapeN"
+  op: "ShapeN"
+  input: "Reshape"
+  input: "Variable/read"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_grad/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\024\000\000\000\010\000\000\000\001\000\000\000@\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_grad/Conv2DBackpropInput"
+  op: "Conv2DBackpropInput"
+  input: "train/gradients/Conv2D_grad/ShapeN"
+  input: "Variable/read"
+  input: "train/gradients/add_grad/tuple/control_dependency"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "dilations"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_grad/Conv2DBackpropFilter"
+  op: "Conv2DBackpropFilter"
+  input: "Reshape"
+  input: "train/gradients/Conv2D_grad/Const"
+  input: "train/gradients/add_grad/tuple/control_dependency"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "dilations"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_grad/tuple/group_deps"
+  op: "NoOp"
+  input: "^train/gradients/Conv2D_grad/Conv2DBackpropInput"
+  input: "^train/gradients/Conv2D_grad/Conv2DBackpropFilter"
+}
+node {
+  name: "train/gradients/Conv2D_grad/tuple/control_dependency"
+  op: "Identity"
+  input: "train/gradients/Conv2D_grad/Conv2DBackpropInput"
+  input: "^train/gradients/Conv2D_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/Conv2D_grad/Conv2DBackpropInput"
+      }
+    }
+  }
+}
+node {
+  name: "train/gradients/Conv2D_grad/tuple/control_dependency_1"
+  op: "Identity"
+  input: "train/gradients/Conv2D_grad/Conv2DBackpropFilter"
+  input: "^train/gradients/Conv2D_grad/tuple/group_deps"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@train/gradients/Conv2D_grad/Conv2DBackpropFilter"
+      }
+    }
+  }
+}
+node {
+  name: "train/GradientDescent/update_Variable/ApplyGradientDescent"
+  op: "ApplyGradientDescent"
+  input: "Variable"
+  input: "train/learning_rate_input"
+  input: "train/gradients/Conv2D_grad/tuple/control_dependency_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/GradientDescent/update_Variable_1/ApplyGradientDescent"
+  op: "ApplyGradientDescent"
+  input: "Variable_1"
+  input: "train/learning_rate_input"
+  input: "train/gradients/add_grad/tuple/control_dependency_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_1"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/GradientDescent/update_Variable_2/ApplyGradientDescent"
+  op: "ApplyGradientDescent"
+  input: "Variable_2"
+  input: "train/learning_rate_input"
+  input: "train/gradients/Conv2D_1_grad/tuple/control_dependency_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_2"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/GradientDescent/update_Variable_3/ApplyGradientDescent"
+  op: "ApplyGradientDescent"
+  input: "Variable_3"
+  input: "train/learning_rate_input"
+  input: "train/gradients/add_1_grad/tuple/control_dependency_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_3"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/GradientDescent/update_Variable_4/ApplyGradientDescent"
+  op: "ApplyGradientDescent"
+  input: "Variable_4"
+  input: "train/learning_rate_input"
+  input: "train/gradients/MatMul_grad/tuple/control_dependency_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_4"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/GradientDescent/update_Variable_5/ApplyGradientDescent"
+  op: "ApplyGradientDescent"
+  input: "Variable_5"
+  input: "train/learning_rate_input"
+  input: "train/gradients/add_2_grad/tuple/control_dependency_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_5"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "train/GradientDescent"
+  op: "NoOp"
+  input: "^train/GradientDescent/update_Variable/ApplyGradientDescent"
+  input: "^train/GradientDescent/update_Variable_1/ApplyGradientDescent"
+  input: "^train/GradientDescent/update_Variable_2/ApplyGradientDescent"
+  input: "^train/GradientDescent/update_Variable_3/ApplyGradientDescent"
+  input: "^train/GradientDescent/update_Variable_4/ApplyGradientDescent"
+  input: "^train/GradientDescent/update_Variable_5/ApplyGradientDescent"
+}
+node {
+  name: "ArgMax/dimension"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "ArgMax"
+  op: "ArgMax"
+  input: "add_2"
+  input: "ArgMax/dimension"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "output_type"
+    value {
+      type: DT_INT64
+    }
+  }
+}
+node {
+  name: "ArgMax_1/dimension"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "ArgMax_1"
+  op: "ArgMax"
+  input: "groundtruth_input"
+  input: "ArgMax_1/dimension"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "output_type"
+    value {
+      type: DT_INT64
+    }
+  }
+}
+node {
+  name: "Equal"
+  op: "Equal"
+  input: "ArgMax"
+  input: "ArgMax_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT64
+        tensor_shape {
+        }
+        int64_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/LessEqual"
+  op: "LessEqual"
+  input: "confusion_matrix/assert_non_negative/Const"
+  input: "ArgMax_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/All"
+  op: "All"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/LessEqual"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Const"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "`labels` contains negative values"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/Const_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Condition x >= 0 did not hold element-wise:"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/Const_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "x (ArgMax_1:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Switch"
+  op: "Switch"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/All"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/All"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_t"
+  op: "Identity"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
+  op: "Identity"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Switch"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/pred_id"
+  op: "Identity"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/All"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/NoOp"
+  op: "NoOp"
+  input: "^confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_t"
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/control_dependency"
+  op: "Identity"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_t"
+  input: "^confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/NoOp"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_t"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_0"
+  op: "Const"
+  input: "^confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "`labels` contains negative values"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_1"
+  op: "Const"
+  input: "^confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Condition x >= 0 did not hold element-wise:"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_2"
+  op: "Const"
+  input: "^confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "x (ArgMax_1:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert"
+  op: "Assert"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/Switch"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_0"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_1"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_2"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/Switch_1"
+  attr {
+    key: "T"
+    value {
+      list {
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_INT64
+      }
+    }
+  }
+  attr {
+    key: "summarize"
+    value {
+      i: 3
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/Switch"
+  op: "Switch"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/All"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_non_negative/assert_less_equal/All"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/Switch_1"
+  op: "Switch"
+  input: "ArgMax_1"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@ArgMax_1"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/control_dependency_1"
+  op: "Identity"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
+  input: "^confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Merge"
+  op: "Merge"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/control_dependency_1"
+  input: "confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/control_dependency"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/control_dependency"
+  op: "Identity"
+  input: "ArgMax_1"
+  input: "^confusion_matrix/assert_non_negative/assert_less_equal/Assert/AssertGuard/Merge"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@ArgMax_1"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT64
+        tensor_shape {
+        }
+        int64_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/LessEqual"
+  op: "LessEqual"
+  input: "confusion_matrix/assert_non_negative_1/Const"
+  input: "ArgMax"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/All"
+  op: "All"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/LessEqual"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Const"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "`predictions` contains negative values"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/Const_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Condition x >= 0 did not hold element-wise:"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/Const_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "x (ArgMax:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Switch"
+  op: "Switch"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/All"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/All"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/switch_t"
+  op: "Identity"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/switch_f"
+  op: "Identity"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Switch"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/pred_id"
+  op: "Identity"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/All"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/NoOp"
+  op: "NoOp"
+  input: "^confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/switch_t"
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/control_dependency"
+  op: "Identity"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/switch_t"
+  input: "^confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/NoOp"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/switch_t"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert/data_0"
+  op: "Const"
+  input: "^confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "`predictions` contains negative values"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert/data_1"
+  op: "Const"
+  input: "^confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Condition x >= 0 did not hold element-wise:"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert/data_2"
+  op: "Const"
+  input: "^confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "x (ArgMax:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert"
+  op: "Assert"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert/Switch"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert/data_0"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert/data_1"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert/data_2"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert/Switch_1"
+  attr {
+    key: "T"
+    value {
+      list {
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_INT64
+      }
+    }
+  }
+  attr {
+    key: "summarize"
+    value {
+      i: 3
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert/Switch"
+  op: "Switch"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/All"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_non_negative_1/assert_less_equal/All"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert/Switch_1"
+  op: "Switch"
+  input: "ArgMax"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@ArgMax"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/control_dependency_1"
+  op: "Identity"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/switch_f"
+  input: "^confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Assert"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/switch_f"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Merge"
+  op: "Merge"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/control_dependency_1"
+  input: "confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/control_dependency"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/control_dependency_1"
+  op: "Identity"
+  input: "ArgMax"
+  input: "^confusion_matrix/assert_non_negative_1/assert_less_equal/Assert/AssertGuard/Merge"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@ArgMax"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/Cast_2/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 29
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/Cast_2"
+  op: "Cast"
+  input: "confusion_matrix/Cast_2/x"
+  attr {
+    key: "DstT"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "SrcT"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Less"
+  op: "Less"
+  input: "confusion_matrix/control_dependency"
+  input: "confusion_matrix/Cast_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/All"
+  op: "All"
+  input: "confusion_matrix/assert_less/Less"
+  input: "confusion_matrix/assert_less/Const"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "`labels` out of bound"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/Const_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Condition x < y did not hold element-wise:"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/Const_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "x (confusion_matrix/control_dependency:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/Const_3"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "y (confusion_matrix/Cast_2:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/Switch"
+  op: "Switch"
+  input: "confusion_matrix/assert_less/All"
+  input: "confusion_matrix/assert_less/All"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/switch_t"
+  op: "Identity"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/switch_f"
+  op: "Identity"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/Switch"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/pred_id"
+  op: "Identity"
+  input: "confusion_matrix/assert_less/All"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/NoOp"
+  op: "NoOp"
+  input: "^confusion_matrix/assert_less/Assert/AssertGuard/switch_t"
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/control_dependency"
+  op: "Identity"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/switch_t"
+  input: "^confusion_matrix/assert_less/Assert/AssertGuard/NoOp"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_less/Assert/AssertGuard/switch_t"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/data_0"
+  op: "Const"
+  input: "^confusion_matrix/assert_less/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "`labels` out of bound"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/data_1"
+  op: "Const"
+  input: "^confusion_matrix/assert_less/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Condition x < y did not hold element-wise:"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/data_2"
+  op: "Const"
+  input: "^confusion_matrix/assert_less/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "x (confusion_matrix/control_dependency:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/data_4"
+  op: "Const"
+  input: "^confusion_matrix/assert_less/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "y (confusion_matrix/Cast_2:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/Assert"
+  op: "Assert"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/Switch"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/data_0"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/data_1"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/data_2"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/Switch_1"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/data_4"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/Switch_2"
+  attr {
+    key: "T"
+    value {
+      list {
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_INT64
+        type: DT_STRING
+        type: DT_INT64
+      }
+    }
+  }
+  attr {
+    key: "summarize"
+    value {
+      i: 3
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/Switch"
+  op: "Switch"
+  input: "confusion_matrix/assert_less/All"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_less/All"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/Switch_1"
+  op: "Switch"
+  input: "confusion_matrix/control_dependency"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@ArgMax_1"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/Assert/Switch_2"
+  op: "Switch"
+  input: "confusion_matrix/Cast_2"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/Cast_2"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/control_dependency_1"
+  op: "Identity"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/switch_f"
+  input: "^confusion_matrix/assert_less/Assert/AssertGuard/Assert"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_less/Assert/AssertGuard/switch_f"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less/Assert/AssertGuard/Merge"
+  op: "Merge"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/control_dependency_1"
+  input: "confusion_matrix/assert_less/Assert/AssertGuard/control_dependency"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/control_dependency_2"
+  op: "Identity"
+  input: "confusion_matrix/control_dependency"
+  input: "^confusion_matrix/assert_less/Assert/AssertGuard/Merge"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@ArgMax_1"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Less"
+  op: "Less"
+  input: "confusion_matrix/control_dependency_1"
+  input: "confusion_matrix/Cast_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/All"
+  op: "All"
+  input: "confusion_matrix/assert_less_1/Less"
+  input: "confusion_matrix/assert_less_1/Const"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "`predictions` out of bound"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/Const_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Condition x < y did not hold element-wise:"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/Const_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "x (confusion_matrix/control_dependency_1:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/Const_3"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "y (confusion_matrix/Cast_2:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/Switch"
+  op: "Switch"
+  input: "confusion_matrix/assert_less_1/All"
+  input: "confusion_matrix/assert_less_1/All"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/switch_t"
+  op: "Identity"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/switch_f"
+  op: "Identity"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/Switch"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/pred_id"
+  op: "Identity"
+  input: "confusion_matrix/assert_less_1/All"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/NoOp"
+  op: "NoOp"
+  input: "^confusion_matrix/assert_less_1/Assert/AssertGuard/switch_t"
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/control_dependency"
+  op: "Identity"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/switch_t"
+  input: "^confusion_matrix/assert_less_1/Assert/AssertGuard/NoOp"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_less_1/Assert/AssertGuard/switch_t"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/data_0"
+  op: "Const"
+  input: "^confusion_matrix/assert_less_1/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "`predictions` out of bound"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/data_1"
+  op: "Const"
+  input: "^confusion_matrix/assert_less_1/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Condition x < y did not hold element-wise:"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/data_2"
+  op: "Const"
+  input: "^confusion_matrix/assert_less_1/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "x (confusion_matrix/control_dependency_1:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/data_4"
+  op: "Const"
+  input: "^confusion_matrix/assert_less_1/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "y (confusion_matrix/Cast_2:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert"
+  op: "Assert"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/Switch"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/data_0"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/data_1"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/data_2"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/Switch_1"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/data_4"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/Switch_2"
+  attr {
+    key: "T"
+    value {
+      list {
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_INT64
+        type: DT_STRING
+        type: DT_INT64
+      }
+    }
+  }
+  attr {
+    key: "summarize"
+    value {
+      i: 3
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/Switch"
+  op: "Switch"
+  input: "confusion_matrix/assert_less_1/All"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_less_1/All"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/Switch_1"
+  op: "Switch"
+  input: "confusion_matrix/control_dependency_1"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@ArgMax"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/Assert/Switch_2"
+  op: "Switch"
+  input: "confusion_matrix/Cast_2"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/Cast_2"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/control_dependency_1"
+  op: "Identity"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/switch_f"
+  input: "^confusion_matrix/assert_less_1/Assert/AssertGuard/Assert"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@confusion_matrix/assert_less_1/Assert/AssertGuard/switch_f"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/assert_less_1/Assert/AssertGuard/Merge"
+  op: "Merge"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/control_dependency_1"
+  input: "confusion_matrix/assert_less_1/Assert/AssertGuard/control_dependency"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "confusion_matrix/control_dependency_3"
+  op: "Identity"
+  input: "confusion_matrix/control_dependency_1"
+  input: "^confusion_matrix/assert_less_1/Assert/AssertGuard/Merge"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@ArgMax"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\035\000\000\000\035\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/stack_1"
+  op: "Pack"
+  input: "confusion_matrix/control_dependency_2"
+  input: "confusion_matrix/control_dependency_3"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "confusion_matrix/transpose/Rank"
+  op: "Rank"
+  input: "confusion_matrix/stack_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+}
+node {
+  name: "confusion_matrix/transpose/sub/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/transpose/sub"
+  op: "Sub"
+  input: "confusion_matrix/transpose/Rank"
+  input: "confusion_matrix/transpose/sub/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "confusion_matrix/transpose/Range/start"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/transpose/Range/delta"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/transpose/Range"
+  op: "Range"
+  input: "confusion_matrix/transpose/Range/start"
+  input: "confusion_matrix/transpose/Rank"
+  input: "confusion_matrix/transpose/Range/delta"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "confusion_matrix/transpose/sub_1"
+  op: "Sub"
+  input: "confusion_matrix/transpose/sub"
+  input: "confusion_matrix/transpose/Range"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "confusion_matrix/transpose"
+  op: "Transpose"
+  input: "confusion_matrix/stack_1"
+  input: "confusion_matrix/transpose/sub_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "Tperm"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "confusion_matrix/ones_like/Shape"
+  op: "Shape"
+  input: "confusion_matrix/control_dependency_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "confusion_matrix/ones_like/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/ones_like"
+  op: "Fill"
+  input: "confusion_matrix/ones_like/Shape"
+  input: "confusion_matrix/ones_like/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "confusion_matrix/ToInt64"
+  op: "Cast"
+  input: "confusion_matrix/stack"
+  attr {
+    key: "DstT"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "SrcT"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "confusion_matrix/zeros/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "confusion_matrix/zeros"
+  op: "Fill"
+  input: "confusion_matrix/stack"
+  input: "confusion_matrix/zeros/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "confusion_matrix/SparseTensorDenseAdd"
+  op: "SparseTensorDenseAdd"
+  input: "confusion_matrix/transpose"
+  input: "confusion_matrix/ones_like"
+  input: "confusion_matrix/ToInt64"
+  input: "confusion_matrix/zeros"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tindices"
+    value {
+      type: DT_INT64
+    }
+  }
+}
+node {
+  name: "Cast"
+  op: "Cast"
+  input: "Equal"
+  attr {
+    key: "DstT"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "SrcT"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "Mean"
+  op: "Mean"
+  input: "Cast"
+  input: "Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "accuracy/tags"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "accuracy"
+      }
+    }
+  }
+}
+node {
+  name: "accuracy"
+  op: "ScalarSummary"
+  input: "accuracy/tags"
+  input: "Mean"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "global_step/Initializer/zeros"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@global_step"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT64
+        tensor_shape {
+        }
+        int64_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "global_step"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@global_step"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "global_step/Assign"
+  op: "Assign"
+  input: "global_step"
+  input: "global_step/Initializer/zeros"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@global_step"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "global_step/read"
+  op: "Identity"
+  input: "global_step"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@global_step"
+      }
+    }
+  }
+}
+node {
+  name: "add_3/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT64
+        tensor_shape {
+        }
+        int64_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "add_3"
+  op: "Add"
+  input: "global_step/read"
+  input: "add_3/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+}
+node {
+  name: "Assign"
+  op: "Assign"
+  input: "global_step"
+  input: "add_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@global_step"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "save/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "model"
+      }
+    }
+  }
+}
+node {
+  name: "save/SaveV2/tensor_names"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 7
+          }
+        }
+        string_val: "Variable"
+        string_val: "Variable_1"
+        string_val: "Variable_2"
+        string_val: "Variable_3"
+        string_val: "Variable_4"
+        string_val: "Variable_5"
+        string_val: "global_step"
+      }
+    }
+  }
+}
+node {
+  name: "save/SaveV2/shape_and_slices"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 7
+          }
+        }
+        string_val: ""
+        string_val: ""
+        string_val: ""
+        string_val: ""
+        string_val: ""
+        string_val: ""
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "save/SaveV2"
+  op: "SaveV2"
+  input: "save/Const"
+  input: "save/SaveV2/tensor_names"
+  input: "save/SaveV2/shape_and_slices"
+  input: "Variable"
+  input: "Variable_1"
+  input: "Variable_2"
+  input: "Variable_3"
+  input: "Variable_4"
+  input: "Variable_5"
+  input: "global_step"
+  attr {
+    key: "dtypes"
+    value {
+      list {
+        type: DT_FLOAT
+        type: DT_FLOAT
+        type: DT_FLOAT
+        type: DT_FLOAT
+        type: DT_FLOAT
+        type: DT_FLOAT
+        type: DT_INT64
+      }
+    }
+  }
+}
+node {
+  name: "save/control_dependency"
+  op: "Identity"
+  input: "save/Const"
+  input: "^save/SaveV2"
+  attr {
+    key: "T"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@save/Const"
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2/tensor_names"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: "Variable"
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2/shape_and_slices"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2"
+  op: "RestoreV2"
+  input: "save/Const"
+  input: "save/RestoreV2/tensor_names"
+  input: "save/RestoreV2/shape_and_slices"
+  attr {
+    key: "dtypes"
+    value {
+      list {
+        type: DT_FLOAT
+      }
+    }
+  }
+}
+node {
+  name: "save/Assign"
+  op: "Assign"
+  input: "Variable"
+  input: "save/RestoreV2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_1/tensor_names"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: "Variable_1"
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_1/shape_and_slices"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_1"
+  op: "RestoreV2"
+  input: "save/Const"
+  input: "save/RestoreV2_1/tensor_names"
+  input: "save/RestoreV2_1/shape_and_slices"
+  attr {
+    key: "dtypes"
+    value {
+      list {
+        type: DT_FLOAT
+      }
+    }
+  }
+}
+node {
+  name: "save/Assign_1"
+  op: "Assign"
+  input: "Variable_1"
+  input: "save/RestoreV2_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_1"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_2/tensor_names"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: "Variable_2"
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_2/shape_and_slices"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_2"
+  op: "RestoreV2"
+  input: "save/Const"
+  input: "save/RestoreV2_2/tensor_names"
+  input: "save/RestoreV2_2/shape_and_slices"
+  attr {
+    key: "dtypes"
+    value {
+      list {
+        type: DT_FLOAT
+      }
+    }
+  }
+}
+node {
+  name: "save/Assign_2"
+  op: "Assign"
+  input: "Variable_2"
+  input: "save/RestoreV2_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_2"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_3/tensor_names"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: "Variable_3"
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_3/shape_and_slices"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_3"
+  op: "RestoreV2"
+  input: "save/Const"
+  input: "save/RestoreV2_3/tensor_names"
+  input: "save/RestoreV2_3/shape_and_slices"
+  attr {
+    key: "dtypes"
+    value {
+      list {
+        type: DT_FLOAT
+      }
+    }
+  }
+}
+node {
+  name: "save/Assign_3"
+  op: "Assign"
+  input: "Variable_3"
+  input: "save/RestoreV2_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_3"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_4/tensor_names"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: "Variable_4"
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_4/shape_and_slices"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_4"
+  op: "RestoreV2"
+  input: "save/Const"
+  input: "save/RestoreV2_4/tensor_names"
+  input: "save/RestoreV2_4/shape_and_slices"
+  attr {
+    key: "dtypes"
+    value {
+      list {
+        type: DT_FLOAT
+      }
+    }
+  }
+}
+node {
+  name: "save/Assign_4"
+  op: "Assign"
+  input: "Variable_4"
+  input: "save/RestoreV2_4"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_4"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_5/tensor_names"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: "Variable_5"
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_5/shape_and_slices"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_5"
+  op: "RestoreV2"
+  input: "save/Const"
+  input: "save/RestoreV2_5/tensor_names"
+  input: "save/RestoreV2_5/shape_and_slices"
+  attr {
+    key: "dtypes"
+    value {
+      list {
+        type: DT_FLOAT
+      }
+    }
+  }
+}
+node {
+  name: "save/Assign_5"
+  op: "Assign"
+  input: "Variable_5"
+  input: "save/RestoreV2_5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_5"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_6/tensor_names"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: "global_step"
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_6/shape_and_slices"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "save/RestoreV2_6"
+  op: "RestoreV2"
+  input: "save/Const"
+  input: "save/RestoreV2_6/tensor_names"
+  input: "save/RestoreV2_6/shape_and_slices"
+  attr {
+    key: "dtypes"
+    value {
+      list {
+        type: DT_INT64
+      }
+    }
+  }
+}
+node {
+  name: "save/Assign_6"
+  op: "Assign"
+  input: "global_step"
+  input: "save/RestoreV2_6"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@global_step"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "save/restore_all"
+  op: "NoOp"
+  input: "^save/Assign"
+  input: "^save/Assign_1"
+  input: "^save/Assign_2"
+  input: "^save/Assign_3"
+  input: "^save/Assign_4"
+  input: "^save/Assign_5"
+  input: "^save/Assign_6"
+}
+node {
+  name: "Merge/MergeSummary"
+  op: "MergeSummary"
+  input: "cross_entropy_1"
+  input: "accuracy"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+}
+node {
+  name: "init"
+  op: "NoOp"
+  input: "^Variable/Assign"
+  input: "^Variable_1/Assign"
+  input: "^Variable_2/Assign"
+  input: "^Variable_3/Assign"
+  input: "^Variable_4/Assign"
+  input: "^Variable_5/Assign"
+  input: "^global_step/Assign"
+}
+versions {
+  producer: 24
+}

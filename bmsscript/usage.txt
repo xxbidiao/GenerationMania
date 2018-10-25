@@ -1,0 +1,6 @@
+Install: npm install in bms-js
+using node.js (apt-get install node)
+npm install mongodb --save
+
+use parser.js [FILENAME] to parse a BMS file.
+The output will be an object in the console, for IPC to python side.

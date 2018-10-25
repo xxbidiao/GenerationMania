@@ -1,0 +1,32 @@
+# Database specifications
+
+_id
+hash - File's hash.
+
+## Raw contents
+rawtext - The content of the BMS file itself. Just for backup.
+
+## Headers
+headers - Parsed Header, with all original contents.
+artist
+title
+parent - The first chart within the same folder, most likely charts with the same parent represents the same song.
+
+## Note contents
+Playables - All playable (actual note shown to the players) notes.
+Nonplayables - All nonplayable (bgm) "notes".
+
+# Playable/Nonplayable DB specs
+
+hash - keysound hash, foreign key for `audiosamples`
+time - The starting time of the note.
+end - The ending time of the note if it's a Long Note, `null` otherwise.
+
+## data
+keysound - Raw keysound index in the original BMS.
+column - The column the note resides (if playable).
+beat - The timestamp (in beats from the starting of the song) the note resides, in decimals. This value is prone to BPM variation.
+
+## in-memory temporary variables
+index - in `CreateChart`, used to map object-based notes to flattened (tensor-based) notes.
+

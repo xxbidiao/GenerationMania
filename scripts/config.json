@@ -1,0 +1,17 @@
+{
+"main_db":"musicgame",
+"binary_collection":"audiosamples",
+"chart_collection":"charts",
+"default_host":"localhost",
+"default_port":1337,
+"path_to_bmsscript":"bmsscript/",
+"parser_filename":"main.js",
+"training_file":"traindata/Playable-individual.pt",
+"training_file_per_chart":"traindata/Playable-per-chart.pt",
+"training_state_feedforward":"traindata/state-feedforward.pt",
+"training_state_feedforward_columns":"traindata/state-ff-cols.pt",
+"training_state_LSTM":"traindata/state-lstm.pt",
+"training_epochs":30,
+"lstm_epochs":200,
+"result_feedforward":"traindata/result-feedforward.pt"
+}
