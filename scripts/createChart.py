@@ -96,6 +96,7 @@ class ChartCreator:
     # Move notes around so that they don't come in extremely small intervals.
     def post_process(self,objects,options = None):
         move_overlapping_notes = True
+        shift_right_all_notes = True
         objects.sort(key=lambda item:item['time'])
         if move_overlapping_notes:
             for index in range(len(tqdm(objects))):
@@ -126,8 +127,13 @@ class ChartCreator:
                             if selection not in occupied:
                                 occupied[selection] = True
                                 item['gen_column'] = selection
-                                print("Note %d moved from %d to %d."%(item['index'],orig_col,selection))
+                                #print("Note %d moved from %d to %d."%(item['index'],orig_col,selection))
                                 break
+
+        if shift_right_all_notes:
+            for item in objects:
+                item['gen_column'] = item['gen_column'] + 1
+
     # Build a chart using provided parts.
     def assemble_chart(self,headers=None,objects=None,audio=None):
         result = {}
