@@ -23,7 +23,7 @@ else:
     device = torch.device("cpu")
 
 
-use_history_in_training = False
+use_history_in_training = True
 model_state_name = config.training_state_LSTM
 data_file_name = config.training_file_per_chart
 epochs = config.lstm_epochs
@@ -35,6 +35,10 @@ skip_long_seqs = False
 # Not implemented.
 spacial_random_sampling = True
 random_sample_size = 256
+
+# Is there nan in X?
+def isnan(x):
+    return torch.sum(torch.isnan(x)) > 0
 
 # Weighted Mean Square Error.
 class weighted_mse_loss(nn.MSELoss):
@@ -230,6 +234,9 @@ def train():
             def closure():
                 optimizer.zero_grad()
                 out = ae(features)
+                if isnan(out):
+                    # if nan is in out then do not apply this gradient and discard it.
+                    return -1
                 loss = criterion(out, labels)
                 loss.backward()
                 return loss
