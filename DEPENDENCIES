@@ -1,3 +1,6 @@
 Node.js https://nodejs.org/en/
 
 Tkinter - Try this guide if you don't have it: https://stackoverflow.com/questions/4783810/install-tkinter-for-python
+sudo apt-get install python3-tk
+sudo apt-get install libsndfile1
+sudo apt-get install ffmpeg 

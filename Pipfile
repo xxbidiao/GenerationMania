@@ -22,5 +22,6 @@ scipy = "*"
 lru-dict = "*"
 tensorflow = "*"
 joblib = "*"
+tkinter = "*"
 
 [dev-packages]
